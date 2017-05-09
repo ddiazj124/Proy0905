@@ -21,6 +21,7 @@ class ConsultaProductos{
         $resultado = $this->Conexion()->query($sql);
         
         $i=0;
+        
         /*Obtencion de elementos*/
         while($fila = $resultado->fetch_assoc()){
             $oProducto = new Producto($fila["nombre"],$fila["precio"],$fila["codigo"]);
