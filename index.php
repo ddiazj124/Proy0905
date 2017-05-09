@@ -6,14 +6,18 @@ and open the template in the editor.
 -->
 
 <?php
+
+
 include('lib/Producto.php');
+include('lib/ConsultaProducto.php');
 
 $oProducto1 = new Producto();
 $oProducto2 = new Producto("Nuevo Producto",2000,"2");
 $oProducto3 = new Producto("Nuevo Producto",3000,"3");
 
 $oProducto1->nombre="Nuevo Producto";
-$oProducto1->codigo=1;
+$oProducto1->codigo="1";
+$oProducto1->precio=1000;
 
 
 $aProductos[0] = $oProducto1;
@@ -29,9 +33,11 @@ $aProductos[2] = $oProducto3;
     </head>
     <body>
         <?php
-            foreach($aProductos as $lista)
+        
+        $aProductos2 = new ConsultaProductos();
+            foreach($aProductos2->Lista() as $lista)
             {
-                echo $lista->codigo.' '.$lista->nombre;
+                echo $lista->codigo.' '.$lista->nombre.'/'.$lista->precio.'/'.$lista->totalUSD();
                 echo "<br>";
             }
             
